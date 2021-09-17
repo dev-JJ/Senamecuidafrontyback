@@ -2,18 +2,18 @@ import React from 'react';
 import './estilos.css';
 import Swal from 'sweetalert2';
 import TextField from '@material-ui/core/TextField';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
-import {Modal} from 'react-bootstrap';
-import {Title} from '../../Components/common/Texts';
-import {Form, Container, Row, Col, Button} from 'react-bootstrap'
+import { Modal } from 'react-bootstrap';
+import { Title } from '../../Components/common/Texts';
+import { Form, Container, Row, Col, Button } from 'react-bootstrap'
 import ReCAPTCHA from "react-google-recaptcha";
 
 // import { Input } from '../common/Inputs';
-import {ButtonIcon} from '../../Components/common/Button';
+import { ButtonIcon } from '../../Components/common/Button';
 
 const useStyles = makeStyles((theme) => ({
     formControl: {
@@ -425,7 +425,7 @@ const Visitante = () => {
             return (false);
         } else {
             await fetch(`${process.env.REACT_APP_API_URL}/api/visitante/create`, {
-            // await fetch(`${process.env.REACT_APP_API_URL}/api/visitante/create`, {
+                // await fetch(`${process.env.REACT_APP_API_URL}/api/visitante/create`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -507,7 +507,7 @@ const Visitante = () => {
                 placeholder='Ingresa tu nombre completo'
                 variant="outlined"
             />
-            <div style={{width: '100%', marginTop: '1%', marginLeft: '-2%'}}>
+            <div style={{ width: '100%', marginTop: '1%', marginLeft: '-2%' }}>
                 <FormControl variant="outlined" fullWidth className={classes.formControl}>
                     <InputLabel id="demo-simple-select-outlined-label">Genero</InputLabel>
                     <Select
@@ -523,7 +523,7 @@ const Visitante = () => {
                     </Select>
                 </FormControl>
             </div>
-            <div style={{width: '100%', marginTop: '1%'}}>
+            <div style={{ width: '100%', marginTop: '1%' }}>
                 <TextField
                     value={email}
                     onChange={handleEmailChange}
@@ -537,7 +537,7 @@ const Visitante = () => {
                     variant="outlined"
                 />
             </div>
-            <div style={{width: '100%', marginTop: '1.5%'}}>
+            <div style={{ width: '100%', marginTop: '1.5%' }}>
                 <TextField
                     value={documentoIdentidad}
                     onChange={handleDocumentoIdentidadChange}
@@ -552,7 +552,7 @@ const Visitante = () => {
                     variant="outlined"
                 />
             </div>
-            <div style={{width: '100%', marginTop: '1.5%'}}>
+            <div style={{ width: '100%', marginTop: '1.5%' }}>
                 <TextField
                     value={telefono}
                     onChange={handleTelefonoChange}
@@ -567,7 +567,7 @@ const Visitante = () => {
                     variant="outlined"
                 />
             </div>
-            <div style={{width: '100%', marginTop: '1.5%'}}>
+            <div style={{ width: '100%', marginTop: '1.5%' }}>
                 <TextField
                     value={celular}
                     onChange={handleCelularChange}
@@ -582,7 +582,7 @@ const Visitante = () => {
                     variant="outlined"
                 />
             </div>
-            <div style={{width: '100%', marginTop: '1.5%'}}>
+            <div style={{ width: '100%', marginTop: '1.5%' }}>
                 <TextField
                     value={direccionResidencia}
                     onChange={handleDireccionResidenciaChange}
@@ -596,7 +596,7 @@ const Visitante = () => {
                     variant="outlined"
                 />
             </div>
-            <div style={{width: '100%', marginTop: '1%', marginLeft: '-2%'}}>
+            <div style={{ width: '100%', marginTop: '1%', marginLeft: '-2%' }}>
                 <FormControl variant="outlined" fullWidth className={classes.formControl}>
                     <InputLabel id="demo-simple-select-outlined-label">EPS</InputLabel>
                     <Select
@@ -625,7 +625,7 @@ const Visitante = () => {
                     </Select>
                 </FormControl>
             </div>
-            <div style={{width: '100%', marginLeft: '-2%'}}>
+            <div style={{ width: '100%', marginLeft: '-2%' }}>
                 <FormControl variant="outlined" fullWidth className={classes.formControl}>
                     <InputLabel id="demo-simple-select-outlined-label">TORRE</InputLabel>
                     <Select
@@ -640,7 +640,7 @@ const Visitante = () => {
                     </Select>
                 </FormControl>
             </div>
-            <div style={{width: '100%', marginLeft: '-2%'}}>
+            <div style={{ width: '100%', marginLeft: '-2%' }}>
                 <FormControl variant="outlined" fullWidth className={classes.formControl}>
                     <InputLabel id="demo-simple-select-outlined-label">Numero de Piso</InputLabel>
                     <Select
@@ -664,7 +664,7 @@ const Visitante = () => {
                     </Select>
                 </FormControl>
             </div>
-            <div style={{width: '100%', marginLeft: '-2%'}}>
+            <div style={{ width: '100%', marginLeft: '-2%' }}>
                 <FormControl variant="outlined" fullWidth className={classes.formControl}>
                     <InputLabel id="demo-simple-select-outlined-label">Medio de Transporte</InputLabel>
                     <Select
@@ -683,7 +683,7 @@ const Visitante = () => {
                     </Select>
                 </FormControl>
             </div>
-            <div style={{marginTop: 25}}>
+            <div style={{ marginTop: 25 }}>
                 <ButtonIcon
                     bgColor='#00A7AF'
                     title='Siguiente'
@@ -693,14 +693,14 @@ const Visitante = () => {
             <Modal show={modalSec}>
                 <Modal.Header>
                     <Modal.Title>
-                        <Title title='FORMULARIO  DE  REGISTRO'/>
+                        <Title title='FORMULARIO  DE  REGISTRO' />
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className="card-body">
                         <Container>
                             <h3>Presenta algunos de estos síntomas?</h3>
-                            <hr/>
+                            <hr />
                             <Form onSubmit={handleSubmit}>
                                 <Row>
                                     <Col>
@@ -708,32 +708,32 @@ const Visitante = () => {
                                             <strong>Fiebre?</strong>
                                         </Form.Label>
                                         <Form.Check type="radio" id="fiebre"
-                                                    onChange={e => setFiebre(e.target.value = true)}
-                                                    value={fiebre} name={'fiebre'} label={'Si'}/>
+                                            onChange={e => setFiebre(e.target.value = true)}
+                                            value={fiebre} name={'fiebre'} label={'Si'} />
                                         <Form.Check type="radio" onChange={e => setFiebre(e.target.value = false)}
-                                                    value={fiebre} name={'fiebre'} label={'No'}/>
+                                            value={fiebre} name={'fiebre'} label={'No'} />
                                     </Col>
                                     <Col>
                                         <Form.Label>
                                             <strong>Tos?</strong>
                                         </Form.Label>
                                         <Form.Check type="radio" onChange={e => setTos(e.target.value = true)}
-                                                    value={Tos} name={'Tos'} label={'Si'}/>
+                                            value={Tos} name={'Tos'} label={'Si'} />
                                         <Form.Check type="radio" onChange={e => setTos(e.target.value = false)}
-                                                    value={Tos} name={'Tos'} label={'No'}/>
+                                            value={Tos} name={'Tos'} label={'No'} />
                                     </Col>
                                     <Col>
                                         <Form.Label>
                                             <strong>Dolor al tragar?</strong>
                                         </Form.Label>
                                         <Form.Check type="radio" onChange={e => setDolorTragar(e.target.value = true)}
-                                                    value={dolorTragar} name={'dolorTragar'} label={'Si'}/>
+                                            value={dolorTragar} name={'dolorTragar'} label={'Si'} />
                                         <Form.Check type="radio" onChange={e => setDolorTragar(e.target.value = false)}
-                                                    value={dolorTragar} name={'dolorTragar'} label={'No'}/>
+                                            value={dolorTragar} name={'dolorTragar'} label={'No'} />
                                     </Col>
                                 </Row>
 
-                                <hr/>
+                                <hr />
 
                                 <Row>
                                     <Col>
@@ -741,24 +741,24 @@ const Visitante = () => {
                                             <strong>Malestar general?</strong>
                                         </Form.Label>
                                         <Form.Check type="radio"
-                                                    onChange={e => setMalestarGeneral(e.target.value = true)}
-                                                    value={malestargeneral} name={'malestargeneral'} label={'Si'}/>
+                                            onChange={e => setMalestarGeneral(e.target.value = true)}
+                                            value={malestargeneral} name={'malestargeneral'} label={'Si'} />
                                         <Form.Check type="radio"
-                                                    onChange={e => setMalestarGeneral(e.target.value = false)}
-                                                    value={malestargeneral} name={'malestargeneral'} label={'No'}/>
+                                            onChange={e => setMalestarGeneral(e.target.value = false)}
+                                            value={malestargeneral} name={'malestargeneral'} label={'No'} />
                                     </Col>
                                     <Col>
                                         <Form.Label>
                                             <strong>Dificultad para respirar?</strong>
                                         </Form.Label>
                                         <Form.Check type="radio"
-                                                    onChange={e => setDificultadRespirar(e.target.value = true)}
-                                                    value={dificultadRespirar} name={'dificultadRespirar'}
-                                                    label={'Si'}/>
+                                            onChange={e => setDificultadRespirar(e.target.value = true)}
+                                            value={dificultadRespirar} name={'dificultadRespirar'}
+                                            label={'Si'} />
                                         <Form.Check type="radio"
-                                                    onChange={e => setDificultadRespirar(e.target.value = false)}
-                                                    value={dificultadRespirar} name={'dificultadRespirar'}
-                                                    label={'No'}/>
+                                            onChange={e => setDificultadRespirar(e.target.value = false)}
+                                            value={dificultadRespirar} name={'dificultadRespirar'}
+                                            label={'No'} />
 
                                     </Col>
                                     <Col>
@@ -766,30 +766,30 @@ const Visitante = () => {
                                             <strong>Gripa?</strong>
                                         </Form.Label>
                                         <Form.Check type="radio" onChange={e => setGripa(e.target.value = true)}
-                                                    value={gripa} name={'gripa'} label={'Si'}/>
+                                            value={gripa} name={'gripa'} label={'Si'} />
                                         <Form.Check type="radio" onChange={e => setGripa(e.target.value = false)}
-                                                    value={gripa} name={'gripa'} label={'No'}/>
+                                            value={gripa} name={'gripa'} label={'No'} />
                                     </Col>
                                 </Row>
-                                <hr/>
+                                <hr />
                                 <Row>
                                     <Col>
                                         <Form.Label>
                                             <strong>Diarrea?</strong>
                                         </Form.Label>
                                         <Form.Check type="radio" onChange={e => setDiarrea(e.target.value = true)}
-                                                    value={diarrea} name={'diarrea'} label={'Si'}/>
+                                            value={diarrea} name={'diarrea'} label={'Si'} />
                                         <Form.Check type="radio" onChange={e => setDiarrea(e.target.value = false)}
-                                                    value={diarrea} name={'diarrea'} label={'No'}/>
+                                            value={diarrea} name={'diarrea'} label={'No'} />
                                     </Col>
                                     <Col>
                                         <Form.Label>
                                             <strong>Ha tenido contacto con casos sospechosos o confirmados?</strong>
                                         </Form.Label>
                                         <Form.Check type="radio" onChange={e => setContacto(e.target.value = true)}
-                                                    value={contacto} name={'contacto'} label={'Si'}/>
+                                            value={contacto} name={'contacto'} label={'Si'} />
                                         <Form.Check type="radio" onChange={e => setContacto(e.target.value = false)}
-                                                    value={contacto} name={'contacto'} label={'No'}/>
+                                            value={contacto} name={'contacto'} label={'No'} />
 
                                     </Col>
                                     <Col>
@@ -797,18 +797,18 @@ const Visitante = () => {
                                             <strong>Dolor de cabeza?</strong>
                                         </Form.Label>
                                         <Form.Check type="radio" onChange={e => setTratamiento(e.target.value = true)}
-                                                    value={tratamiento} name={'tratamiento'} label={'Si'}/>
+                                            value={tratamiento} name={'tratamiento'} label={'Si'} />
                                         <Form.Check type="radio" onChange={e => setTratamiento(e.target.value = false)}
-                                                    value={tratamiento} name={'tratamiento'} label={'No'}/>
+                                            value={tratamiento} name={'tratamiento'} label={'No'} />
                                     </Col>
                                 </Row>
-                                <hr/>
+                                <hr />
                                 <ReCAPTCHA
                                     ref={recaptchaRef}
                                     size="visible"
                                     sitekey="6LfFLNEZAAAAACWMrkWTf3aX36H0yMPX-nTjuDrl"
                                 />
-                                <div style={{marginTop: 25, marginLeft: "44%"}}>
+                                <div style={{ marginTop: 25, marginLeft: "44%" }}>
                                     <ButtonIcon
                                         bgColor='#00A7AF'
                                         title='Siguiente'
@@ -822,10 +822,10 @@ const Visitante = () => {
                 <Modal.Footer>
                     <ButtonIcon bgColor='#00A7AF' title='Anterior' onClick={() => {
                         setModalSec(false)
-                    }}/>
+                    }} />
                     <ButtonIcon bgColor='#e74c3c' title='Cerrar' onClick={() => {
                         setModalSec(false)
-                    }}/>
+                    }} />
                 </Modal.Footer>
             </Modal>
         </div>

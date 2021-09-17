@@ -11,9 +11,9 @@ const Button = ({ title, onClick, bgColor }) => {
     )
 }
 
-const ButtonIcon = ({ title, icon, onClick, bgColor }) => {
+const ButtonIcon = ({ title, icon, onClick, bgColor, disabled }) => {
     return (
-            <button className='button' onClick={onClick} style={{background: bgColor}}>
+            <button className='button' onClick={onClick} disabled={disabled} style={{background: bgColor}}>
                 <FontAwesomeIcon className='icono' icon={icon} />
                 {title}
             </button>

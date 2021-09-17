@@ -10,12 +10,14 @@ import Visitante from '../../Components/Forms/Visitante';
 import Aprendiz from '../../Components/Forms/Aprendiz';
 import Funcionario from '../../Components/Forms/Funcionario';
 import NuevoReporte from '../../Components/Forms/ReporteSalud/NuevoReporteSalud';
+import ComoTeSientes from '../../Components/Forms/ComoTeSientes/ComoTeSientes';
 import Tutorial from '../../Components/Forms/Tutorial/Tutorial';
 import { ButtonIcon } from '../../Components/common/Button';
 import './estilos.css';
 import NavTopLanding from '../../Components/Navs/navTopLanding';
 import { Footer } from '../../Components/Footer/Footer';
 import foto1 from '../../Assets/image/iconos/LogoSena.png';
+
 
 
 class Inicio extends Component {
@@ -30,79 +32,106 @@ class Inicio extends Component {
         return (
 
             <div className='containerGeneral'>
-            
+
                 <NavTopLanding />
-                <div className='fondo'>               
-                 <div className='container'>
-                    <Title title='SENA ME CUIDA' />
-                    <SubTitle title='Para registrarte selecciona tu cargo en el Sena' />
+                <div className='fondo'>
+                    <div className='container'>
+                        <Title title='SENA ME CUIDA' />
+                        <SubTitle title='Para registrarte selecciona tu cargo en el Sena' />
 
-                            <Link onClick={() => { this.setState({ openModal: true, rol: 'Tutorial' }) }}>
+                        <Link onClick={() => { this.setState({ openModal: true, rol: 'Tutorial' }) }}>
                             <ButtonIconA title='¿Como Registrarse?' />
-                            </Link>
-
-                    <div className='contCards'>
-                    <div>
-                        <CardRol  bgColor='#78BECE'   onClick={() => { this.setState({ openModal: true, rol: 'Visitante' }) }} />
-                         <img className='foto1' src={foto1} onClick={() => { this.setState({ openModal: true, rol: 'Visitante' }) }}/>
-
-                         <div id="cardf" onClick={() => { this.setState({ openModal: true, rol: 'Visitante' }) }}>Visitante</div>
-                   </div>
-                       
-                       <div>
-                        <CardRol  bgColor='#707070'  onClick={() => { this.setState({ openModal: true, rol: 'Funcionario' }) }} />
-                        <img className='foto1' src={foto1} onClick={() => { this.setState({ openModal: true, rol: 'Funcionario' }) }}  />
-
-                         <div id="cardf2" onClick={() => { this.setState({ openModal: true, rol: 'Funcionario' }) }}>Funcionario</div><br/>
-                         <Link onClick={() => { this.setState({ openModal: true, rol: 'NuevoReporte' }) }}>
-                            <ButtonIconA title='REPORTE DE SALUD' icon={faUserCircle} />
                         </Link>
-                   </div>
 
-                   <div>
-                        <CardRol  bgColor='#006164'  onClick={() => { this.setState({ openModal: true, rol: 'Aprendiz' }) }} />
-                        <img className='foto1' src={foto1} onClick={() => { this.setState({ openModal: true, rol: 'Aprendiz' }) }} />
-                         <div id="cardf3" onClick={() => { this.setState({ openModal: true, rol: 'Aprendiz' }) }}>Aprendiz</div>
-                   </div>
+                        <div className='contCards'>
+                            <div>
+                                <CardRol bgColor='#78BECE' onClick={() => { this.setState({ openModal: true, rol: 'Visitante' }) }} />
+                                <img className='foto1' src={foto1} onClick={() => { this.setState({ openModal: true, rol: 'Visitante' }) }} />
 
-                        
-                        
-                    </div>
-                    <div className='contText'>
-                        <Text
-                            align='center'
-                            text="Tenga en cuenta que sus datos serán tratados bajo la normativa de la ley de habeas data, al ingresar sus datos usted está autorizando de manera expresa e inequívoca para mantener y manejar la información suministrada, solo para aquellas finalidades para las que se encuentra facultado el aplicativo SENA ME CUIDA y respetando en todo caso, la normatividad vigente sobre protección de datos personales."
-                        />
-                        <Link  to='/soporte'>
-                            <a style={{color:'#707070', display:'table', marginLeft:'auto', marginRight:'auto'}}><img src={require('../../Assets/image/iconos/soporte.png')} style={{width:'35px', margin:'10px'}} />SOPORTE TECNICO</a>
-                        </Link><br />
-                        
+                                <div id="cardf" onClick={() => { this.setState({ openModal: true, rol: 'Visitante' }) }}>Visitante</div>
+                            </div>
+
+                            <div>
+                                <CardRol bgColor='#707070' onClick={() => { this.setState({ openModal: true, rol: 'Funcionario' }) }} />
+                                <img className='foto1' src={foto1} onClick={() => { this.setState({ openModal: true, rol: 'Funcionario' }) }} />
+
+                                <div id="cardf2" onClick={() => { this.setState({ openModal: true, rol: 'Funcionario' }) }}>Funcionario</div><br />
+                                <Link onClick={() => { this.setState({ openModal: true, rol: 'ComoTeSientes' }) }}>
+                                    <ButtonIconA title='¿Como te sientes hoy?' icon={faUserCircle} />
+                                </Link><br />
+
+                                {/* <Link onClick={() => { this.setState({ openModal: true, rol: 'NuevoReporte' }) }}>
+                                    <ButtonIconA title='REPORTE DE SALUD' icon={faUserCircle} />
+                                </Link> */}
+                            </div>
+
+                            <div>
+                                <CardRol bgColor='#006164' onClick={() => { this.setState({ openModal: true, rol: 'Aprendiz' }) }} />
+                                <img className='foto1' src={foto1} onClick={() => { this.setState({ openModal: true, rol: 'Aprendiz' }) }} />
+                                <div id="cardf3" onClick={() => { this.setState({ openModal: true, rol: 'Aprendiz' }) }}>Aprendiz</div><br />
+
+                                {/* <Link onClick={() => { this.setState({ openModal: true, rol: 'ReportePsicologico' }) }}>
+                                    <ButtonIconA title='REPORTE PSICOLOGICO' icon={faUserCircle} />
+                                </Link><br />
+                                <Link onClick={() => { this.setState({ openModal: true, rol: 'ReporteComorbilidades' }) }}>
+                                    <ButtonIconA title='ReporteComorbilidades' icon={faUserCircle} />
+                                </Link><br /> */}
+                            </div>
+
+
+
+                        </div>
+                        <div className='contText'>
+                            <Text
+                                align='center'
+                                text="Tenga en cuenta que sus datos serán tratados bajo la normativa de la ley de habeas data, al ingresar sus datos usted está autorizando de manera expresa e inequívoca para mantener y manejar la información suministrada, solo para aquellas finalidades para las que se encuentra facultado el aplicativo SENA ME CUIDA y respetando en todo caso, la normatividad vigente sobre protección de datos personales."
+                            />
+                            <Link to='/soporte'>
+                                <a style={{ color: '#707070', display: 'table', marginLeft: 'auto', marginRight: 'auto' }}><img src={require('../../Assets/image/iconos/soporte.png')} style={{ width: '35px', margin: '10px' }} />SOPORTE TECNICO</a>
+                            </Link><br />
+
                         </div></div>
-                    <Modal show={this.state.openModal} className='widthModal'>
+                    <Modal show={this.state.openModal} onHide={() => { this.setState({ openModal: false }) }} className='widthModal'>
 
                         <Modal.Header>
-                        
-                            <Modal.Title>
-                                {this.state.rol === 'Tutorial' ?
-                                   <Title title='Tutorial de Registro' /> :
-                                   this.state.rol === 'NuevoReporte' ?
-                                   <Title title='Reporte de Salud' /> :
-                                    <Title title='FORMULARIO  DE  REGISTRO' /> 
 
-                            }
+                            <Modal.Title>
+                                {
+                                    this.state.rol === 'Tutorial' ?
+                                        <Title title='TUTORIAL' /> :
+                                    this.state.rol === 'Visitante' ?
+                                        <Title title='FORMULARIO DE VISITANTE' /> :
+                                    this.state.rol === 'Funcionario' ?
+                                        <Title title='FORMULARIO DE FUNCIONARIO' /> :
+                                    this.state.rol === 'Aprendiz' ?
+                                        <Title title='FORMULARIO DE APRENDIZ' /> :
+                                    this.state.rol === 'ComoTeSientes' ?
+                                        <Title title='Cuentanos ¿Como te sientes hoy?' /> :
+                                        <Title title='SENA ME CUIDA CESGE' />
+
+                                }
                             </Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             {
                                 this.state.rol === 'Visitante' ?
                                     <Visitante /> :
-                                    this.state.rol === 'Funcionario' ?
-                                        <Funcionario /> :
-                                        this.state.rol === 'Aprendiz' ?
-                                        <Aprendiz /> :
-                                        this.state.rol === 'NuevoReporte' ?
-                                        <NuevoReporte /> :
-                                        <Tutorial />
+                                this.state.rol === 'Funcionario' ?
+                                    <Funcionario /> :
+                                this.state.rol === 'Aprendiz' ?
+                                    <Aprendiz /> :
+                                this.state.rol === 'ComoTeSientes' ?
+                                    <ComoTeSientes /> :
+                                    <Tutorial />
+                                // this.state.rol === 'ReportePsicologico' ?
+                                //     <ReportePsicologico /> :
+                                // this.state.rol === 'ReporteComorbilidades' ?
+                                //     <ReporteComorbilidades /> :z
+                                // this.state.rol === 'Aprendiz' ?
+                                //     <Aprendiz /> :
+                                // this.state.rol === 'NuevoReporte' ?
+                                //     <NuevoReporte /> :
+                                //     <Tutorial />
                             }
                         </Modal.Body>
                         <Modal.Footer>

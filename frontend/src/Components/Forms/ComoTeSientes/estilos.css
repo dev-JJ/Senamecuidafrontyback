@@ -1,0 +1,55 @@
+.containerForm {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.MuiFormGroup-row{
+text-decoration:none;
+font-weight: 100;
+font-size: 10px;
+color:#ffffff;
+padding-top:10px;
+padding-bottom:10px;
+padding-left:10px;
+padding-right:10px;
+background-color:#FF6D00;
+border-color: #f8ab70;
+border-width: 3px;
+border-style: solid;
+border-radius : 20px;
+margin-left: 10px;
+text-align: center;
+width: 130px;
+}
+
+
+[data-title]:hover:after {
+    opacity: 1;
+    transition: all 0.1s ease 0.5s;
+    visibility: visible;
+}
+
+[data-title]:after {
+    content: attr(data-title);
+    background-color: rgb(247, 247, 247);
+    color: #FF6D00;
+    font-size: 14px;
+    font-family: Raleway;
+    position: absolute;
+    padding: 3px 20px;
+    bottom: -1.6em;
+    left: 100%;
+    white-space: nowrap;
+    box-shadow: 1px 1px 3px #222222;
+    opacity: 0;
+    border: 1px solid #111111;
+    z-index: 99999;
+    visibility: hidden;
+    border-radius: 6px;
+    
+}
+[data-title] {
+    position: relative;
+}

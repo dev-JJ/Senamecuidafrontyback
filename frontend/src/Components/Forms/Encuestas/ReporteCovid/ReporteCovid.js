@@ -1,9 +1,11 @@
+
 import React from 'react';
 import {Form, Container, Row, Col, Alert, Button} from 'react-bootstrap'
 import Swal from 'sweetalert2';
 
 
-const Encuesta = () => {
+
+const ReporteCovid = () => {
 
     const [fiebre, setFiebre] = React.useState(false)
     const [dolorTragar, setDolorTragar] = React.useState(false)
@@ -14,6 +16,8 @@ const Encuesta = () => {
     const [diarrea, setDiarrea] = React.useState(false)
     const [contacto, setContacto] = React.useState(false)
     const [tratamiento, setTratamiento] = React.useState(false)
+
+    
 
 
     const handleSubmit = e => {
@@ -51,7 +55,10 @@ const Encuesta = () => {
             })
         }
 
-    };
+    }
+    ;
+
+    
 
     return (
         <div>
@@ -155,14 +162,10 @@ const Encuesta = () => {
                         </Row>
                         <hr/>
                         <Row>
-                            <Col md={{span: 10, offset: 1}}>
-                                <Button
-                                    variant="outline-secondary"
-                                    size="lg" block
-                                    type="submit">
-                                    Verificar
-                                </Button>
-                            </Col>
+                        <div className="App">
+      <br />
+      <button type="button" class="btn btn-success" onClick={() => mostrarAlerta1()}>Registrar</button>
+    </div>
                         </Row>
                     </Form>
                 </Container>
@@ -170,4 +173,4 @@ const Encuesta = () => {
         </div>
     )
 }
-export default Encuesta
+export default ReporteCovid

@@ -11,7 +11,7 @@ import {Form, Container, Row, Col, Button} from 'react-bootstrap'
 
 
 // import { Input } from '../../common/Inputs';
-import { ButtonIcon } from '../../../Components/common/Button';
+import { ButtonIcon } from '../../common/Button';
 
 const Visitante = () => {
     const [fiebre, setFiebre] = React.useState(false)

@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import './estilos.css';
 import { Modal } from 'react-bootstrap';
+
 import { Title } from '../../common/Texts';
-import { Form, Container, Row } from 'react-bootstrap'
+import TextField from '@material-ui/core/TextField';
+import {Form, Container, Row, Col, Button} from 'react-bootstrap'
 import Swal from 'sweetalert2';
 
 import FormGroup from '@material-ui/core/FormGroup';
@@ -10,6 +12,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { withStyles } from '@material-ui/core/styles';
 import { green } from '@material-ui/core/colors';
+import { ButtonIcon } from '../../../Components/common/Button';
 
 //Encuestas
 import NuevoReporte from '../ReporteSalud/NuevoReporteSalud';
@@ -18,9 +21,6 @@ import ReporteHipertension from '../Encuestas/ReporteHipertension/ReporteHiperte
 import ReporteObesidad from '../Encuestas/ReporteObesidad/ReporteObesidad';
 import ReportePsicologico from '../Encuestas/ReportePsicologico/ReportePsicologico';
 import AsistenciaMedico from '../Encuestas/AsistenciaMedico/AsistenciaMedico';
-
-// import { Input } from '../common/Inputs';
-import { ButtonIcon } from '../../common/Button';
 
 const mostrarAlerta1=()=>{
     Swal.fire({
@@ -77,11 +77,55 @@ const ComoTeSientes = () => {
     const OpenModalMedico = () => setModalMedico(true);
     const CloseModalMedico = () => setModalMedico(false);
 
+    const [documentoIdentidad, setDocumentoIdentidad] = React.useState('');
+    const [dataState, setDataState] = React.useState({});
+    const [boton, setBoton] = React.useState(true);
+    const [modalSec, setModalSec] = React.useState(false);
+    const OpenModalSec = () => setModalSec(true);
+
+    const handleDocumentoIdentidadChange = (event) => setDocumentoIdentidad(event.target.value)
+
+
+    function prevent() {
+        document.querySelector("#documentoIdentidad").addEventListener("keypress", function (evt) {
+            if (evt.which !== 8 && evt.which !== 0 && evt.which < 48 || evt.which > 57) {
+                evt.preventDefault();
+            }
+        });
+        var NID = document.querySelector('#documentoIdentidad');
+        NID.addEventListener('input', function () {
+            if (this.value.length > 10)
+                this.value = this.value.slice(0, 10);
+        })
+    }
+    
+    useEffect(() => {
+
+        const callSearchService = () => {
+        
+            if (documentoIdentidad!== '') {
+                registro()
+            }
+        }
+      
+        let consultarAPI = setTimeout(() => {
+          callSearchService();
+        }, 3500);
+        
+        // Se dispara cada vez que se re-renderiza el componente
+        return () => {
+          clearTimeout(consultarAPI);
+        }
+      }, [documentoIdentidad]);
+
+      
     useEffect(() => {
         contarChecks()
+        
       });
 
     const [state, setState] = React.useState({
+        checked: false,
         checked1: false,
         checked2: false,
         checked3: false,
@@ -126,6 +170,7 @@ const ComoTeSientes = () => {
                 confirmButtonText: `Si`,
                 denyButtonText: `NO`,
                 icon: 'question'
+                //xdxdxdxdd
             }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
@@ -150,6 +195,7 @@ const ComoTeSientes = () => {
                 denyButtonText: `NO`,
                 icon: 'question'
             }).then((result) => {
+                //dxdxdxdx
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     setState({checked3: false});
@@ -228,12 +274,85 @@ const ComoTeSientes = () => {
         }
 
     };
+   
+    
+    async function registro(){
+        await fetch(`${process.env.REACT_APP_API_URL}../api/aprendiz/ingreso`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({documentoIdentidad})
+        })
+        .then(function (result) {
+            if (result['ok'] === true) {
+                result.text().then(function(data) { 
+                    setDataState(data);
+                    console.log(data);
+                })
+                .then(
+                fetch(`${process.env.REACT_APP_API_URL}/api/ingresoSuspendido/ing`, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({documentoIdentidad})
+                })
+                .then(function (result) {
+                    if (result['ok'] === true) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: '¡BLOQUEADO!',
+                            text: '¡Debes contactar al medico SENA por el ultimo reporte que dice que tienes mas de 3 sintomas!',
+                            timer: 10500
+                        })
+                        setBoton(true)
+                    } else {
+                        result.text().then(function(data) { 
+                            Swal.fire({
+                                icon: 'success',
+                                title: '¡APRENDIZ ENCONTRADO!',
+                                text: "AHORA LLENA EL CUESTIONARIO",
+                                timer: 10500
+                            })
+                            setBoton(false)
+                        })
+                    }
+                    })
+                )
+            } else {
+                result.text().then(function(data) { 
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡ERROR!',
+                        text: data,
+                        timer: 10500
+                    })
+                    setBoton(true)
+                })
+            }
+            })
+        }
+//cuerpo del reporte
 
-    return (
-        <div className='containerForm'>
-            <div>
-                <div className="card-body">
-                    <Container>
+return (
+    <div className='containerForm'>
+        <TextField
+            value={documentoIdentidad}
+            onChange={handleDocumentoIdentidadChange}
+            onKeyDown={prevent}
+            required
+            name="documentoIdentidad"
+            id='documentoIdentidad'
+            type='number'
+            label='Documento de Identidad'
+            placeholder='Ingresa el documento de identidad'
+            variant='outlined'
+        />  <div>
+                 <div className="card-body">
+                 <Container>
                         <h3>Selecciona un emoji y luego presiona continuar</h3>
                         <hr />
                         <Form>
@@ -247,6 +366,7 @@ const ComoTeSientes = () => {
                                                 onChange={handleChange}
                                                 name="checked1"
                                                 color="primary"
+                                              
                                             />
                                         }
                                     />
@@ -450,10 +570,10 @@ const ComoTeSientes = () => {
                     <AsistenciaMedico/>
                 </Modal.Body>
                 <Modal.Footer>
-                <div className="App">
+                        <div className="App">
                         <br />
                         <button type="button" class="btn btn-success" onClick={() => mostrarAlerta1()}>Registrar</button>
-                      </div>   
+                      </div>
                 </Modal.Footer>
             </Modal>
 

@@ -22,6 +22,8 @@ import Select from 'react-select'
 
 const AsistenciaMedico = () => {
 
+   
+
 
     const options = [
         { value: 'Ninguna', label: 'Ninguna'},
@@ -100,7 +102,7 @@ const AsistenciaMedico = () => {
                   <Select 
                     options={options}
                     onChange={OnDropdownChange}
-                    defaultValue={options[0]} 
+                    defaultValue={options[0]}
                   />
                 </div>
               </Col>

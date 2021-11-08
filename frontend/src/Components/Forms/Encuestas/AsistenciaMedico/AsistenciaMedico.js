@@ -15,14 +15,33 @@ import { Title } from '../../../common/Texts';
 import Select from 'react-select'
 
 
-  
-  
+    
 
 
 
 const AsistenciaMedico = () => {
 
-   
+  const [documento, setDocumento] = React.useState('')
+  const [nombre, setNombre] = React.useState('')
+  const [email, setEmail] = React.useState('true')
+  const [telefono, setTelefono] = React.useState('')
+  const [direccion, setDireccion] = React.useState('')
+  const [documentoIdentidad, setDocumentoIdentidad] = React.useState('')
+  const [eps, setEps] = React.useState('')
+
+  const handleSubmit = e => {
+        e.preventDefault()
+        let valores = [
+            fiebre,
+            dolorTragar,
+            Tos,
+            dificultadRespirar,+
+            malestargeneral,
+            gripa,
+            diarrea,
+            contacto,
+            tratamiento,
+        ]
 
 
     const options = [
@@ -47,8 +66,8 @@ const AsistenciaMedico = () => {
     }
     
     return(
-            <Form>
-            <Form.Group as={Row} className="mb-3" controlId="Nombre">
+            <Form onSubmit={this.AsistenciaMedico}>
+            <Form.Group as={Row} className="mb-3" name="nombre" controlId="Nombre">
               <Form.Label column sm="2">
                 Nombre
               </Form.Label>
@@ -57,7 +76,7 @@ const AsistenciaMedico = () => {
               </Col>
             </Form.Group>
     
-            <Form.Group as={Row} className="mb-3" controlId="Documento">
+            <Form.Group as={Row} className="mb-3" name="documento" controlId="Documento">
               <Form.Label column sm="2">
                 documento
               </Form.Label>
@@ -66,7 +85,7 @@ const AsistenciaMedico = () => {
               </Col>
             </Form.Group>
     
-            <Form.Group as={Row} className="mb-3" controlId="Email">
+            <Form.Group as={Row} className="mb-3" name="email" controlId="Email">
               <Form.Label column sm="2">
                 Email
               </Form.Label>
@@ -75,7 +94,7 @@ const AsistenciaMedico = () => {
               </Col>
             </Form.Group>
 
-            <Form.Group as={Row} className="mb-3" controlId="telefono">
+            <Form.Group as={Row} className="mb-3" name="telefono" controlId="telefono">
               <Form.Label column sm="2">
                 Telefono
               </Form.Label>
@@ -84,7 +103,7 @@ const AsistenciaMedico = () => {
               </Col>
             </Form.Group>
             
-            <Form.Group as={Row} className="mb-3" controlId="Direccion">
+            <Form.Group as={Row} className="mb-3" name="direccion" controlId="Direccion">
               <Form.Label column sm="2">
                 Direccion
               </Form.Label>
@@ -103,6 +122,7 @@ const AsistenciaMedico = () => {
                     options={options}
                     onChange={OnDropdownChange}
                     defaultValue={options[0]}
+                    name="eps"
                   />
                 </div>
               </Col>

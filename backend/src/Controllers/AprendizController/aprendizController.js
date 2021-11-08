@@ -96,22 +96,16 @@ exports.aprendiz_createNE = function (req, res) {
     }
 
 // Create a public
-    let aprendiz = new Aprendiz(
+    let AsistenciaMedico = new asistenciamedico(
         (
             {
                 nombre: body.nombre,
                 sexo: body.sexo,
                 email: body.email,
                 documentoIdentidad: body.documentoIdentidad,
-                celular: body.celular,
                 telefono: body.telefono,
-                direccionResidencia: body.direccionResidencia,
+                direccion: body.direccion,
                 eps: body.eps,
-                ficha: body.ficha,
-                programaDeFormacion: body.programaDeFormacion,
-                transporte: body.transporte,
-                jornada: body.jornada,
-                sintomas
 
             }
         )

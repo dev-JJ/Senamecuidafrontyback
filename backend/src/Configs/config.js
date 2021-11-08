@@ -11,7 +11,7 @@ process.env.SEED = process.env.SEED || 'eventoSena';
 
 
 //en /senamecuida se debe colocar el nombre de la base de datos que importamos 
-process.env.URLDB='mongodb://localhost/senamecuida'
+process.env.URLDB='mongodb://localhost:27017/senamecuida'
 
 process.env.SECRET="fabrica2020"
 

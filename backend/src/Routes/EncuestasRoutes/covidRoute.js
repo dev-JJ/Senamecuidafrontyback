@@ -6,31 +6,43 @@ require('mongoose-type-email');
 const moment = require('moment');
 
 
-const EncuestaDepresionSchema = new Schema(
+const EncuestaCovidSchema = new Schema(
     {
         sintomas: {
 
-            perdidainteres: {
+            fiebre: {
                 type: Boolean,
                 required: true,
             },
-            altibajos: {
+            tos: {
                 type: Boolean,
                 required: true,
             },
-            faltaconcentracion: {
+            dolorTragar: {
                 type: Boolean,
                 required: true,
             },
-            malpeso: {
+            malestarGeneral: {
                 type: Boolean,
                 required: true,
             },
-            somnolencia: {
+            dificultadRespirar: {
                 type: Boolean,
                 required: true,
             },
-            aislamiento: {
+            gripa: {
+                type: Boolean,
+                required: true,
+            },
+            diarrea: {
+                type: Boolean,
+                required: true,
+            },
+            contactoSospechoso: {
+                type: Boolean,
+                required: true,
+            },
+            tratamiento: {
                 type: Boolean,
                 required: true,
             },
@@ -43,4 +55,4 @@ const EncuestaDepresionSchema = new Schema(
 
 )
 
-module.exports = mongoose.model("EncuestaDepresion", EncuestaDepresionSchema);
+module.exports = model("EncuestaCovid", EncuestaCovidSchema);

@@ -47,4 +47,4 @@ const asistenciaMedicaSchema = new Schema(
     }
 )
 
-module.exports = model("AsistenciaMedica", asistenciaMedicaSchema);
+module.exports = mongoose.model("AsistenciaMedica", asistenciaMedicaSchema);

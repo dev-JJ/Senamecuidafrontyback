@@ -6,31 +6,31 @@ require('mongoose-type-email');
 const moment = require('moment');
 
 
-const EncuestaDepresionSchema = new Schema(
+const EncuestaDiabetesSchema = new Schema(
     {
         sintomas: {
 
-            perdidainteres: {
+            presionarterial: {
                 type: Boolean,
                 required: true,
             },
-            altibajos: {
+            embarazo: {
                 type: Boolean,
                 required: true,
             },
-            faltaconcentracion: {
+            colesterol: {
                 type: Boolean,
                 required: true,
             },
-            malpeso: {
+            examenglucosa: {
                 type: Boolean,
                 required: true,
             },
-            somnolencia: {
+            antecedentes: {
                 type: Boolean,
                 required: true,
             },
-            aislamiento: {
+            pariente: {
                 type: Boolean,
                 required: true,
             },
@@ -43,4 +43,4 @@ const EncuestaDepresionSchema = new Schema(
 
 )
 
-module.exports = mongoose.model("EncuestaDepresion", EncuestaDepresionSchema);
+module.exports = model("EncuestaDiabetes", EncuestaDiabetesSchema);

@@ -2,61 +2,46 @@ const SaludController = {}
 const Aprendiz = require('../../Models/Encuestas/tlb_asistencia_medica')
 const moment = require('moment-timezone');
 
-SaludController.ActualizarEstado = async (req, res) => {
+AsistenciaMedicoController.AsistenciaCreate = async (req, res) => {
 
-    const {body} = req
-    let dato = new Date()
-    let date_ob = moment.tz(dato, "America/Bogota").locale('es').format('MMMM Do YYYY, h:mm:ss a')
-    console.log(date_ob)
+    let asistenciamedico = new asistenciamedico(
+        (
+            {
+                nombre: body.nombre,
+                sexo: body.sexo,
+                email: body.email,
+                documentoIdentidad: body.documentoIdentidad,
+                telefono: body.telefono,
+                direccion: body.direccion,
+                eps: body.eps,
 
-    const Sintomas = {
-        nombre: body.nombre,
-
-        documento: body.nombre,
-
-        correo: body.correo,
-
-        telefono: body.telefono,
-
-        eps: body.eps,
-
-
-        sintomas: {
-            fiebre: body.fiebre,
-            Tos: body.Tos,
-            horaActualizacion:date_ob ,
-            DolorTragar: body.DolorTragar,
-            MalestarGeneral: body.MalestarGeneral,
-            DificultadRespirar: body.DificultadRespirar,
-            Gripa: body.Gripa,
-            Diarrea: body.Diarrea,
-            ContactoSospechoso: body.ContactoSospechoso,
-            DolorArticular: body.DolorArticular
-        }
-    }
-
-    try {
-        const identificacionAprendiz = await Aprendiz.findOne({documentoIdentidad: body.documentoIdentidad})
-
-        if (identificacionAprendiz) {
-            const ApId = identificacionAprendiz._id
-            const nuevoEstado = await Aprendiz.findByIdAndUpdate(ApId, {$set: Sintomas}, {new: true})
+            }
+        )
+    );
 
 
-            const fecha = nuevoEstado.horaActualizacion
+// ------------- save public in the database -----------
 
+    asistenciamedico
+        .save()
+        .then(data => {
+            res.send("¡Su registro se ha guardado exitosamente!");
+        })
+        .then(dat => {
+            emailSend(body);
 
-            res.json(nuevoEstado)
-        } else {
-            res.status(404).json({message: 'La identificación no esta registrada'})
-        }
-
-    } catch (e) {
-
-        console.log(e)
-    }
-
-
+            Visitante.findOneAndUpdate({email: body.email}, (err, usuario) => {
+                if (err) return res.status(500).send({message: 'err'})
+            })
+            return res.send("Ok")
+        })
+        .catch(err => {
+            if (err.name === 'MongoError' && err.code === 11000) {
+                // Duplicate username
+                console.log(err);
+                return res.status(409).send(err.keyValue);
+            }
+        })
 }
 
 module.exports = AsistenciaMedicoController
